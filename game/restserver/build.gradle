@@ -1,0 +1,52 @@
+plugins {
+    id 'java-library'
+
+    // Reports test coverage
+    id 'jacoco'
+}
+
+ext {
+    slf4jVersion = '1.7.25'
+    jerseyVersion = '2.28'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_10
+targetCompatibility = JavaVersion.VERSION_1_10
+
+//application {
+//	sourceCompatibility = JavaVersion.VERSION_1_10
+//	targetCompatibility = JavaVersion.VERSION_1_10
+//	// mainClassName = 'simpleex.restserver.LatLongGrizzlyApp'
+//}
+
+dependencies {
+
+    implementation project(path: ':core', configuration: 'default')
+    compile project(path: ':restapi', configuration: 'default')
+
+
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+    compile "org.slf4j:slf4j-simple:$slf4jVersion"
+
+    compile "org.glassfish.jersey.core:jersey-server:$jerseyVersion"
+    compile "org.glassfish.jersey.media:jersey-media-json-jackson:$jerseyVersion"
+    compile "org.glassfish.jersey.inject:jersey-hk2:$jerseyVersion"
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.glassfish.jersey.test-framework:jersey-test-framework-util:$jerseyVersion"
+
+    // See https://jersey.github.io/documentation/latest/deployment.html#deployment.http for various server options
+    compile "org.glassfish.jersey.containers:jersey-container-grizzly2-http:$jerseyVersion"
+    implementation "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-grizzly2:$jerseyVersion"
+
+    runtime 'javax.activation:activation:1.1.1'
+    runtime 'javax.xml.bind:jaxb-api:2.3.0'
+    runtime 'com.sun.xml.bind:jaxb-core:2.3.0'
+    runtime 'com.sun.xml.bind:jaxb-impl:2.3.0'
+}
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}

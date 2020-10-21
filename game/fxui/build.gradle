@@ -1,0 +1,76 @@
+import com.github.spotbugs.SpotBugsTask
+
+plugins {
+    // Adds support for Java
+    id 'java'
+
+    // Apply the application plugin to add support for building a CLI application
+    id 'application'
+
+    // JavaFX
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+
+    // Reports test coverage
+    id 'jacoco'
+
+    // Reports common bugs/mistakes
+    id 'com.github.spotbugs' version '2.0.0'
+
+    // Reports deviations from accepted code style conventions
+    id 'checkstyle'
+}
+
+repositories {
+    // Use JCenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+spotbugs {
+    // Allow build to continue when there are warnings from SpotBugs.
+    ignoreFailures = true
+}
+
+// Generate HTML report instead of XML for SpotBugs
+tasks.withType(SpotBugsTask){
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+checkstyle {
+    configFile = project.file("../core/config/checkstyle/google_checks.xml")
+}
+
+javafx {
+    version = '12.0.2'
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base']
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(path: ':restserver', configuration: 'default')
+    
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:28.0-jre'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+
+    // Serializes objects as JSON
+    implementation 'com.google.code.gson:gson:2.8.5'
+    
+    // For testing the GUI
+    testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
+    testImplementation 'org.testfx:testfx-junit:4.0.16-alpha'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
+}
+
+application {
+    // Define the main class for the application
+    mainClassName = 'fxui.FxApp'
+}

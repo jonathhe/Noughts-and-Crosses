@@ -1,0 +1,52 @@
+import com.github.spotbugs.SpotBugsTask
+
+plugins {
+    // Adds support for Java
+    id 'java'
+    
+    // Reports test coverage
+    id 'jacoco'
+    
+    // Reports common bugs/mistakes
+    id 'com.github.spotbugs' version '2.0.0'
+    
+    // Reports deviations from accepted code style conventions
+    id 'checkstyle'
+}
+
+spotbugs {
+    // Allow build to continue when there are warnings from SpotBugs
+    ignoreFailures = true
+}
+
+// Generate HTML report instead of XML for SpotBugs
+tasks.withType(SpotBugsTask){
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+repositories {
+    // Use JCenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+checkstyle {
+    configFile = project.file("config/checkstyle/google_checks.xml")
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:28.0-jre'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+
+    // Serializes objects as JSON
+    implementation 'com.google.code.gson:gson:2.8.5'
+}

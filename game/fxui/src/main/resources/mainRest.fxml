@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="506.0" prefWidth="708.0" style="-fx-background-color: EAEAEA;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxui.RestController">
+    <children>
+        <GridPane fx:id="gridPane" alignment="BASELINE_CENTER" gridLinesVisible="true" layoutX="64.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="100" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints prefHeight="100" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints prefHeight="100" valignment="CENTER" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <Label alignment="CENTER" layoutX="86.0" layoutY="58.0" text="This is a simple game of Tic-Tac-Toe" textAlignment="CENTER">
+            <font>
+                <Font size="16.0" />
+            </font></Label>
+        <TextField fx:id="player1NameField" focusTraversable="false" layoutX="64.0" layoutY="421.0" />
+        <Label fx:id="p1" layoutX="64.0" layoutY="404.0" text="Player 1:" />
+        <Button fx:id="restartButton" focusTraversable="false" layoutX="300.0" layoutY="419.0" mnemonicParsing="false" onAction="#restartGame" text="Restart">
+            <font>
+                <Font size="14.0" />
+            </font></Button>
+        <TextArea fx:id="textArea" editable="false" focusTraversable="false" layoutX="417.0" layoutY="104.0" prefHeight="300.0" prefWidth="256.0" wrapText="true" />
+        <TextField fx:id="player2NameField" focusTraversable="false" layoutX="64.0" layoutY="467.0" />
+        <Label fx:id="p2" layoutX="64.0" layoutY="450.0" text="Player 2:" />
+        <ChoiceBox fx:id="choiceBox" layoutX="300.0" layoutY="467.0" prefHeight="25.0" prefWidth="64.0" />
+        <Label fx:id="p1stats" layoutX="225.0" layoutY="425.0" text="99/99/99" />
+        <Label fx:id="p2stats" layoutX="225.0" layoutY="471.0" text="77/77/77" />
+    </children>
+</AnchorPane>

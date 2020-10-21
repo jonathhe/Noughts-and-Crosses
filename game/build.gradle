@@ -1,0 +1,12 @@
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+subprojects {
+    ext.depVersions = ['jackson': '2.9.8']
+}
