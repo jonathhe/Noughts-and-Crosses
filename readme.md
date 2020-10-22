@@ -3,7 +3,7 @@
 ## Gruppemedlemmer
   - Benjamin Aune Brekken (backend)
   - Emil Hjelle (backend)
-  - Jonathan Hermansen (React frontend og backend)
+  - Jonathan Hermansen (React frontend og API backend)
   - Lars-Olav Vågene (backend)
 
 ## Mapper
