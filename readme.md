@@ -1,10 +1,10 @@
 # Group gr1907 repository
 
 ## Gruppemedlemmer
-  - Benjamin Aune Brekken
-  - Emil Hjelle
-  - Jonathan Hermansen
-  - Lars-Olav Vågene
+  - Benjamin Aune Brekken (backend)
+  - Emil Hjelle (backend)
+  - Jonathan Hermansen (React frontend og backend)
+  - Lars-Olav Vågene (backend)
 
 ## Mapper
 Hoveddelen av prosjektet ligger i mappen /game/, og er satt opp til å bygges og kjøres med Gradle. Webappen ligger i mappen /frontend/.
